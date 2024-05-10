@@ -61,7 +61,7 @@ jobs:
           draft: false
           prerelease: false
       - name: download artifact
-        uses: action/download-artifact@v2
+        uses: actions/download-artifact@v2
         with:
           name: zipped-bundle
       - name: upload release asset
