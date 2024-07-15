@@ -73,7 +73,22 @@ jobs:
           asset_path: ./${{ github.sha }}.zip
           asset_name: source_code_with_libraries.zip
           asset_content_type: application/zip
-          
+
+publish:
+  runs-on: ubuntu-latest
+  steps:
+  - name: Create release
+    id: create_release
+    uses: actions/create-release@v1
+    env:
+      GITHUB_TOKEN: ${{ secrets.github_token }} # this token is provided by action
+    with:
+      tag_name: ${{ github.run_number }}
+      release_name: Release ${{ github.run_number }}
+      body: New release for ${{ github.sha }}. Release notes can be found in the docs
+      draft: false
+      prerelease: false
+      
           
     
   
